@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.js"></script>
+    <style>
+        .button-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #decrease, #increase {
+            background-color: #ccc;
+            border: none;
+            padding: 10px 20px;
+            margin: 200px 110px; /* Ajuste a margem horizontal aqui */
+            cursor: pointer;
+            .functions-container {
+            display: flex;
+            justify-content: space-between; /* Espaço igual entre os círculos */
+            margin-top: 20px; /* Espaçamento acima dos círculos */
+        }
+        }
+    </style>
+    <link rel="stylesheet" href="css/slider.css"/>
+</head>
+<body>
+    <div class="frame">
+        <div class="button-container">
+            <button id="decrease">-</button>
+            <div id="slider" class="rslider"></div>
+            <button id="increase">+</button>
+        </div>
+    </div>
+
+    <link type='text/css' rel='stylesheet' href='Css\toggle.css'>
+    <div class="toggle-switch">
+        <label for="toggle-checkbox" class="switch">
+            <input type="checkbox" id="toggle-checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            const slider = $("#slider").roundSlider({
+                sliderType: "min-range",
+                width: 18,
+                radius: 100,
+                value: 23,
+                max: "30",
+                min: "16",
+                startAngle: 90, // Configura o ângulo inicial para meia volta
+                tooltipFormat: function(args) {
+                    return '<span style="font-size: 24px;">' + args.value + '°</span>'; // Estilo para aumentar o tamanho do valor
+                }
+
+            });
+
+        // Obter o valor atual do slider
+        const sliderValue = () => slider.roundSlider("option", "value");
+
+        // Atualizar o valor exibido na tela
+        const updateValue = () => {
+            const value = sliderValue();
+            $("#value").text(value);
+        };
+
+        // Evento de clique no botão de aumento
+        $("#increase").on("click", () => {
+            const currentValue = sliderValue();
+            if (currentValue < 30) {
+                slider.roundSlider("option", "value", currentValue + 1);
+                updateValue();
+            }
+        });
+
+        // Evento de clique no botão de diminuição
+        $("#decrease").on("click", () => {
+            const currentValue = sliderValue();
+            if (currentValue > 16) {
+                slider.roundSlider("option", "value", currentValue - 1);
+                updateValue();
+            }
+        });
+
+        // Inicializar o valor exibido na tela
+        updateValue();
+});
+    </script>
+</body>
+</html>

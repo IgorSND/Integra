@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    background: #b1bdc4;
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  
+.rs-control .rs-range-color {
+    background-color: #e32405;
+}
+.rs-control .rs-path-color {
+    background-color: #22a1b6;
+}
+.rs-control .rs-handle {
+    background-color: #ffffff;
+}
+.rs-control .rs-bg-color {
+    background-color: #ffffff;
+}
+
+.center-xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+  }
+  
+.frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 2px;
+      box-shadow: .5rem 1rem 1rem 0 rgba(0,0,0,0.6);
+      overflow: hidden;
+    color: #333;
+      font-family: 'Rubik', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+   background: #201c29;
+  }
+  #slider {
+	position: absolute;
+	width: 170px;
+	height: 100px;
+	top: 24%;
+	left: 33%;
+	z-index: 1000;
+}
+.functions-container {
+  display: flex;
+  justify-content: space-between; /* Espaço igual entre os botões */
+  margin-top: 20px; /* Margem superior para ajustar a posição vertical */
+  margin-bottom: -200px; /* Margem inferior para ajustar a posição vertical */
+}
+
+.function {
+  text-align: center; /* Alinhamento do texto */
+  border-radius: 50%; /* Tornar o botão redondo */
+  background-color: #ccc; /* Cor de fundo dos botões */
+  padding: 10px; /* Espaçamento interno dos botões */
+  width: 60px; /* Largura dos botões */
+  height: 60px; /* Altura dos botões */
+}
+
+.function .icon {
+  font-size: 24px; /* Tamanho do ícone */
+  /* Adicione o estilo do ícone aqui (por exemplo, font-family ou classe de ícone) */
+}
+
+.function .name {
+  font-size: 14px; /* Tamanho do nome */
+  margin-top: 5px; /* Espaçamento entre o ícone e o nome */
+}

@@ -1,0 +1,10 @@
+/* Seu CSS personalizado aqui */
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Outros estilos personalizados */

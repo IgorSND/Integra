@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Controle da Sala de Aula</title>
+  <style>
+  </style>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <div class="container">    
+    <div class="center-vertically">
+      <h1 class="title">Controle da Sala de Aula 1307</h1>
+      <img class="room-image" src="remote-control.png" alt="Sala 1307" />
+    </div>
+    
+
+    <div class="column">
+      <h2>Ar Cond</h2>
+      <button id="ligarArCondicionado">
+        <img src="air-conditioner.png" alt="Ligar Ar Condicionado" width="50" height="50" />
+      </button>
+      <button id="desligarArCondicionado">
+        <img src="off.png" alt="Desligar Ar Condicionado" width="50" height="50" />
+      </button>
+      <div class="temperature-controls">
+        <button id="diminuirTemperatura"class="arrow-button">
+          <img src="low-temperature.png" alt="Diminuir Temperatura" width="30" height="30" />
+        </button>
+        <button id="aumentarTemperatura"class="arrow-button">
+          <img src="increase.png" alt="Aumentar Temperatura" width="30" height="30" />
+        </button>
+      </div>
+    </div>
+    
+    <div class="column">
+      <h2>Lampadas</h2>
+      <button id="abrirDialogoLigarLampadas">
+        <img src="light-bulb.png" alt="Ligar Lampadas" width="50" height="50" />
+      </button>
+      <button id="desligarLampadas">
+        <img src="turned-off.png" alt="Desligar Lampadas" width="50" height="50" />
+      </button>
+    <div id="dialogoLigarLampadas" class="dialogo-modal" style="display: none;">
+      <div class="dialogo-conteudo">
+        <span>Selecione a coluna de lâmpadas que deseja ligar:</span>
+        <select id="selecionarColuna">
+          <option value="coluna1">Coluna 1</option>
+          <option value="coluna2">Coluna 2</option>
+          <option value="coluna3">Coluna 3</option>
+          <!-- Adicione mais opções conforme necessário -->
+        </select>
+        <button id="confirmarLigarLampadas">Confirmar </button> 
+    </div>
+        </div>
+    </div>
+
+    <div class="column">
+      <h2>Projetor</h2>
+      <button id="ligarProjetor">
+        <img src="projector.png" alt="Ligar Projetor" width="50" height="50" />
+      </button>
+      <button id="desligarProjetor">
+        <img src="projector_X-removebg-preview.png" alt="Desligar Projetor" width="50" height="50" />
+      </button>
+    </div>
+  </div>
+
+  
+  <script>
+    document.getElementById('ligarArCondicionado').addEventListener('click', () => {
+        // Carregar a página de controle de temperatura na mesma janela
+        window.location.href = 'controle_temperatura.html';
+    });
+    document.getElementById('ligarProjetor').addEventListener('click', () => {
+        window.location.href = 'projetor.html';
+    });
+    // Função para enviar comandos para o Raspberry Pi
+    function enviarComando(comando) {
+    fetch('http://localhost:5000/enviar-comando', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ comando: comando }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // resposta  exibida no console
+        console.log(data.resposta);
+    })
+    .catch(error => {
+        console.error('Erro ao enviar comando:', error);
+    });
+}
+
+    // Lidar com os cliques nos botões
+    document.getElementById('ligarArCondicionado').addEventListener('click', () => {
+      enviarComando('ligarArCondicionado');
+    });
+    
+    document.getElementById('abrirDialogoLigarLampadas').addEventListener('click', () => {
+  // Exibir a caixa de diálogo
+    document.getElementById('dialogoLigarLampadas').style.display = 'block';
+    });
+
+    document.getElementById('confirmarLigarLampadas').addEventListener('click', () => {
+      const colunaSelecionada = document.getElementById('selecionarColuna').value;
+      // Execute a ação com base na coluna selecionada (por exemplo, enviar para o Raspberry Pi)
+      enviarComando(`ligarLampadas:${colunaSelecionada}`);
+      // Feche a caixa de diálogo modal
+    document.getElementById('dialogoLigarLampadas').style.display = 'none';
+    });
+
+    
+    document.getElementById('desligarLampadas').addEventListener('click', () => {
+      enviarComando('desligarLampadas');
+    });
+    
+    document.getElementById('ligarProjetor').addEventListener('click', () => {
+      enviarComando('ligarProjetor');
+    });
+    
+    document.getElementById('desligarProjetor').addEventListener('click', () => {
+      enviarComando('desligarProjetor');
+    });
+  </script>
+</body>
+</html>
