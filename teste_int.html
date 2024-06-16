@@ -16,17 +16,17 @@
 
     <div class="column">
       <h2>Ar Cond</h2>
-      <button id="ligarArCondicionado">
+      <button id="ligarArCondicionado" title="Ligar Ar Condicionado">
         <img src="air-conditioner.png" alt="Ligar Ar Condicionado" width="50" height="50" />
       </button>
-      <button id="desligarArCondicionado">
+      <button id="desligarArCondicionado" title="Desligar Ar Condicionado">
         <img src="off.png" alt="Desligar Ar Condicionado" width="50" height="50" />
       </button>
       <div class="temperature-controls">
-        <button id="diminuirTemperatura"class="arrow-button">
+        <button id="diminuirTemperatura" class="arrow-button" title="Diminuir Temperatura">
           <img src="low-temperature.png" alt="Diminuir Temperatura" width="30" height="30" />
         </button>
-        <button id="aumentarTemperatura"class="arrow-button">
+        <button id="aumentarTemperatura" class="arrow-button" title="Aumentar Temperatura">
           <img src="increase.png" alt="Aumentar Temperatura" width="30" height="30" />
         </button>
       </div>
@@ -34,10 +34,10 @@
     
     <div class="column">
       <h2>Lampadas</h2>
-      <button id="abrirDialogoLigarLampadas">
+      <button id="abrirDialogoLigarLampadas" title="Ligar Lampadas">
         <img src="light-bulb.png" alt="Ligar Lampadas" width="50" height="50" />
       </button>
-      <button id="desligarLampadas">
+      <button id="desligarLampadas" title="Desligar Lampadas">
         <img src="turned-off.png" alt="Desligar Lampadas" width="50" height="50" />
       </button>
     <div id="dialogoLigarLampadas" class="dialogo-modal" style="display: none;">
@@ -56,10 +56,10 @@
 
     <div class="column">
       <h2>Projetor</h2>
-      <button id="ligarProjetor">
+      <button id="ligarProjetor" title="Ligar Projetor">
         <img src="projector.png" alt="Ligar Projetor" width="50" height="50" />
       </button>
-      <button id="desligarProjetor">
+      <button id="desligarProjetor" title="Desligar Projetor">
         <img src="projector_X-removebg-preview.png" alt="Desligar Projetor" width="50" height="50" />
       </button>
     </div>
@@ -71,6 +71,7 @@
         // Carregar a página de controle de temperatura na mesma janela
         window.location.href = 'controle_temperatura.html';
     });
+
     document.getElementById('ligarProjetor').addEventListener('click', () => {
         window.location.href = 'projetor.html';
     });
