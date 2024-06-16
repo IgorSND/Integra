@@ -56,15 +56,16 @@ body {
 }
 
 .title {
-  grid-column: 1 / span 3; /* Ocupa todas as 3 colunas */
+  grid-column: 1 / span 3; /* Ocupa todas as 3 colunas, ALTERA O TÍTULO */
   color: #E0E0E0;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
 h2 {
   margin-top: 10;
   color: #BDBDBD;
+  font-size: 15px; 
 }
 
 button {
