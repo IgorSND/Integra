@@ -1,0 +1,1 @@
+Este projeto consiste em um sistema para automação de uma sala de aula, o sistema consiste em uma plataforma Web hospedada no raspbery a qual o usuario consegue controlar o Ar condicionado, projetor, e luzes via Web. O raspberry é responsavel pelo envio dos comandos via IF e relé
